@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✦ Star Girl — Brand Hub v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400;500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+  :root {
+    /* FINAL PDF PALETTE */
+    --onyx: #0E0E0E;
+    --jet: #1A1A1A;
+    --charcoal: #2E2E2E;
+    --gold: #C9A84C;
+    --gold-dim: #7a6430;
+    --gold-light: #e8c97a;
+    --emerald: #1B4332;
+    --emerald-light: #2d6a50;
+    --burgundy: #5C1A1A;
+    --burgundy-light: #8a2a2a;
+    --candlelight: #3D2B10;
+    --ivory: #E8E8E8;
+    --warm-grey: #888888;
+    --dim-grey: #555555;
+    --black: #0E0E0E;
+    --text: #E8E8E8;
+    --text-muted: #888888;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--onyx);
+    color: var(--ivory);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top:0; z-index:200;
+    background: rgba(14,14,14,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 2.5rem;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-star { color: var(--gold); font-size: 1rem; }
+
+  .nav-tabs { display:flex; gap:0.2rem; flex-wrap:wrap; }
+
+  .tab-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--warm-grey);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .tab-btn:hover { color: var(--ivory); border-color: var(--gold-dim); }
+  .tab-btn.active { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+  .panel { display:none; animation: fadeUp 0.45s ease both; }
+  .panel.active { display:block; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--gold-dim),transparent); }
+
+  .pad { padding: 3rem 4rem; }
+  .pad-top { padding: 3rem 4rem 0; }
+
+  /* ════════════════════════════
+     01 — IDENTITY
+  ════════════════════════════ */
+
+  .hero {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 4rem;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.58rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    font-weight: 700;
+    line-height: 0.88;
+    color: var(--ivory);
+  }
+
+  .hero-title em {
+    display:block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.18em;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-rule { width:48px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); margin:2rem 0; }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 380px;
+  }
+
+  .hero-quote strong { color: var(--ivory); font-weight:400; font-style:normal; }
+
+  .hero-right {
+    background:
+      radial-gradient(ellipse 55% 70% at 50% 55%, rgba(201,168,76,0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 30% 40% at 50% 25%, rgba(201,168,76,0.05) 0%, transparent 55%),
+      linear-gradient(180deg, var(--onyx) 0%, var(--jet) 55%, var(--candlelight) 200%);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+
+  /* 4-POINTED STAR — the real one */
+  .star-mark {
+    position: relative;
+    width: 260px; height: 260px;
+  }
+
+  /* COLOR PALETTE */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px;
+    border: 1px solid var(--gold-dim);
+    margin: 0 4rem 3rem;
+  }
+
+  .swatch {
+    aspect-ratio: 1;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding: 0.6rem;
+    position:relative; overflow:hidden;
+    cursor:default;
+  }
+  .swatch::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,transparent 50%); }
+  .sw-name { font-family:'Cinzel',serif; font-size:0.45rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ivory); position:relative; z-index:2; }
+  .sw-hex { font-size:0.45rem; color:rgba(232,232,232,0.45); position:relative; z-index:2; margin-top:0.15rem; font-family:monospace; }
+
+  /* PAIRINGS */
+  .pairings { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .pairing-card { border:1px solid rgba(201,168,76,0.15); overflow:hidden; }
+  .pairing-swatch { height:80px; display:flex; }
+  .pairing-half { flex:1; }
+  .pairing-body { padding:1rem; }
+  .pairing-name { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem; }
+  .pairing-mood { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); margin-bottom:0.4rem; }
+  .pairing-use { font-size:0.65rem; color:var(--dim-grey); }
+
+  /* TYPOGRAPHY */
+  .type-section { padding:3rem 4rem; border-top:1px solid rgba(201,168,76,0.1); }
+  .type-label { font-size:0.55rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.5rem; }
+  .type-specimen { margin-bottom:2.5rem; }
+
+  /* VOICE */
+  .phrases-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--gold-dim); border:1px solid var(--gold-dim); margin-bottom:3rem; }
+  .phrase-cell { background:var(--jet); padding:1.25rem 1.5rem; }
+  .phrase-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--ivory); margin-bottom:0.4rem; }
+  .phrase-meaning { font-size:0.65rem; color:var(--warm-grey); line-height:1.5; }
+
+  /* DUAL BRAND STAR */
+  .dual-brand { display:grid; grid-template-columns:1fr auto 1fr; gap:3rem; align-items:center; padding:3rem 4rem 4rem; }
+  .brand-block { text-align:center; }
+  .brand-block-label { font-size:0.55rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--warm-grey); margin-bottom:1rem; }
+  .brand-star { font-size:3rem; margin-bottom:0.75rem; display:block; }
+  .brand-block-name { font-family:'Cinzel',serif; font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .brand-block-sub { font-size:0.65rem; color:var(--warm-grey); line-height:1.6; }
+  .brand-divider { display:flex; flex-direction:column; align-items:center; gap:0.5rem; color:var(--gold-dim); font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; }
+
+  /* ════════════════════════════
+     02 — INSTAGRAM
+  ════════════════════════════ */
+
+  /* 12-POST GRID */
+  .grid-12 { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; max-width:570px; margin-bottom:3rem; }
+  .g-cell { aspect-ratio:1; overflow:hidden; cursor:pointer; position:relative; }
+  .g-inner { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.75rem; text-align:center; transition:transform 0.4s; }
+  .g-cell:hover .g-inner { transform:scale(1.05); }
+  .g-num { position:absolute; top:6px; left:8px; font-size:0.45rem; letter-spacing:0.2em; color:rgba(201,168,76,0.4); font-family:'Montserrat',sans-serif; }
+  .g-type { font-size:0.48rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(232,232,232,0.45); margin-bottom:0.35rem; font-family:'Montserrat',sans-serif; font-weight:300; }
+  .g-desc { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.8rem; color:var(--ivory); line-height:1.25; }
+
+  /* CONTENT PILLAR TABLE */
+  .pillar-table { width:100%; border-collapse:collapse; margin-bottom:3rem; }
+  .pillar-table th { font-family:'Cinzel',serif; font-size:0.55rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); padding:0.75rem 1rem; border-bottom:1px solid var(--gold-dim); text-align:left; background:var(--jet); }
+  .pillar-table td { font-size:0.72rem; padding:0.85rem 1rem; border-bottom:1px solid rgba(201,168,76,0.07); color:var(--text-muted); vertical-align:top; line-height:1.55; }
+  .pillar-table tr:hover td { background:rgba(201,168,76,0.03); color:var(--ivory); }
+  .pillar-name { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ivory) !important; }
+  .freq-badge { display:inline-block; background:rgba(201,168,76,0.1); color:var(--gold); font-size:0.55rem; letter-spacing:0.15em; padding:0.2rem 0.5rem; border:1px solid rgba(201,168,76,0.2); }
+
+  /* PRESETS */
+  .presets-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .preset-card { border:1px solid rgba(201,168,76,0.15); overflow:hidden; }
+  .preset-header { padding:1rem 1.25rem 0.75rem; border-bottom:1px solid rgba(201,168,76,0.1); }
+  .preset-name { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+  .preset-file { font-size:0.55rem; color:var(--warm-grey); margin-top:0.2rem; letter-spacing:0.1em; }
+  .preset-body { padding:1rem 1.25rem; }
+  .preset-row { display:flex; justify-content:space-between; align-items:center; padding:0.3rem 0; border-bottom:1px solid rgba(201,168,76,0.06); }
+  .preset-label { font-size:0.62rem; color:var(--warm-grey); }
+  .preset-val { font-size:0.62rem; font-family:'Montserrat',sans-serif; font-weight:500; }
+  .preset-val.pos { color:#6a9e6a; }
+  .preset-val.neg { color:#9e6a6a; }
+
+  /* CAPTION CARDS */
+  .caption-cards { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .caption-card { background:var(--jet); border:1px solid rgba(201,168,76,0.1); padding:1.5rem; }
+  .caption-type { font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.9rem; }
+  .caption-text { font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; line-height:1.8; color:var(--ivory); margin-bottom:0.9rem; }
+  .caption-tags { font-size:0.6rem; color:var(--emerald-light); line-height:1.9; }
+
+  /* ════════════════════════════
+     03 — TIKTOK (NEW)
+  ════════════════════════════ */
+
+  /* SERIES OVERVIEW */
+  .series-arc { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem; align-items:start; }
+
+  .arc-card { border-left:2px solid var(--gold); padding-left:1.75rem; }
+  .arc-label { font-size:0.55rem; letter-spacing:0.38em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.5rem; }
+  .arc-title { font-family:'Cinzel',serif; font-size:1.1rem; letter-spacing:0.1em; color:var(--ivory); margin-bottom:0.6rem; }
+  .arc-body { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; line-height:1.75; color:var(--text-muted); }
+
+  /* MOCKUMENTARY FORMAT */
+  .format-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .format-card { border:1px solid rgba(201,168,76,0.15); padding:1.5rem; position:relative; overflow:hidden; }
+  .format-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+  .format-card.office::before { background:var(--gold); }
+  .format-card.abbott::before { background:var(--emerald-light); }
+  .format-card.hybrid::before { background:var(--burgundy-light); }
+  .format-icon { font-size:1.6rem; margin-bottom:0.75rem; display:block; }
+  .format-name { font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  .format-desc { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.92rem; color:var(--text-muted); line-height:1.65; margin-bottom:0.9rem; }
+  .format-examples { list-style:none; }
+  .format-examples li { font-size:0.65rem; color:var(--dim-grey); padding:0.28rem 0; border-bottom:1px solid rgba(201,168,76,0.06); }
+  .format-examples li::before { content:'▸ '; color:var(--gold-dim); }
+
+  /* VLOG PHASES */
+  .vlog-phases { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--gold-dim); border:1px solid var(--gold-dim); margin-bottom:3rem; }
+  .phase-cell { background:var(--jet); padding:1.5rem; }
+  .phase-num { font-family:'Cinzel',serif; font-size:2rem; font-weight:700; color:rgba(201,168,76,0.12); line-height:1; margin-bottom:0.6rem; }
+  .phase-title { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  .phase-desc { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem; color:var(--text-muted); line-height:1.65; margin-bottom:0.9rem; }
+  .phase-eps { font-size:0.62rem; color:var(--warm-grey); line-height:1.7; }
+  .phase-eps span { color:var(--ivory); }
+
+  /* EPISODE CARDS */
+  .episode-list { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:3rem; }
+  .ep-card { background:var(--jet); border:1px solid rgba(201,168,76,0.12); padding:1.5rem; position:relative; }
+  .ep-num { position:absolute; top:1rem; right:1.25rem; font-family:'Cinzel',serif; font-size:1.5rem; font-weight:700; color:rgba(201,168,76,0.1); }
+  .ep-series { font-size:0.52rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.5rem; }
+  .ep-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--ivory); margin-bottom:0.6rem; }
+  .ep-hook { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem; color:var(--gold); line-height:1.5; margin-bottom:0.9rem; border-left:2px solid var(--gold); padding-left:0.75rem; }
+  .ep-structure { font-size:0.65rem; color:var(--text-muted); line-height:1.8; }
+  .ep-structure strong { color:var(--ivory); font-weight:500; }
+
+  /* CONTENT MODES */
+  .modes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .mode-card { border:1px solid rgba(201,168,76,0.15); overflow:hidden; }
+  .mode-img { height:100px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .mode-img-label { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.8rem; color:rgba(232,232,232,0.35); text-align:center; position:relative; z-index:2; }
+  .mode-body { padding:1.25rem; }
+  .mode-name { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+  .mode-inspo { font-size:0.6rem; color:var(--emerald-light); margin-bottom:0.6rem; font-style:italic; }
+  .mode-desc { font-size:0.7rem; color:var(--text-muted); line-height:1.6; }
+
+  /* RETENTION TOOLS */
+  .retention-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .ret-card { border:1px solid rgba(201,168,76,0.15); padding:1.5rem; }
+  .ret-title { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  .ret-body { font-size:0.72rem; color:var(--text-muted); line-height:1.75; }
+  .ret-body em { color:var(--ivory); font-style:normal; }
+
+  /* CROSS PLATFORM */
+  .cross-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:4rem; }
+  .cross-card { border:1px solid rgba(201,168,76,0.12); padding:1.5rem; }
+  .cross-platform { font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+  .cross-role { font-size:0.62rem; color:var(--emerald-light); margin-bottom:0.75rem; font-style:italic; }
+  .cross-list { list-style:none; font-size:0.68rem; color:var(--text-muted); }
+  .cross-list li { padding:0.28rem 0; border-bottom:1px solid rgba(201,168,76,0.06); }
+  .cross-list li::before { content:'✦ '; color:var(--gold-dim); font-size:0.5rem; vertical-align:middle; }
+
+  /* ════════════════════════════
+     04 — PRESS KIT
+  ════════════════════════════ */
+
+  .bio-block { border-left:2px solid var(--gold); padding-left:1.75rem; margin-bottom:2.5rem; }
+  .bio-version { font-size:0.55rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.65rem; }
+  .bio-text { font-family:'Cormorant Garamond',serif; font-size:1.05rem; line-height:1.9; color:var(--text-muted); }
+  .bio-text em { color:var(--ivory); font-style:normal; }
+
+  .profile-card { background:var(--jet); border:1px solid rgba(201,168,76,0.2); padding:2.5rem; display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:center; margin-bottom:3rem; }
+  .profile-star { font-size:3.5rem; color:var(--gold); }
+  .profile-name { font-family:'Cinzel',serif; font-size:1.5rem; letter-spacing:0.1em; color:var(--ivory); margin-bottom:0.3rem; }
+  .profile-title { font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--warm-grey); margin-bottom:1rem; }
+  .profile-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--gold); }
+  .profile-links { display:flex; gap:1rem; margin-top:1rem; }
+  .profile-link { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--warm-grey); border:1px solid var(--charcoal); padding:0.35rem 0.8rem; }
+
+  .values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--gold-dim); border:1px solid var(--gold-dim); margin-bottom:3rem; }
+  .val-cell { background:var(--jet); padding:1.5rem 1rem; text-align:center; }
+  .val-icon { font-size:1.3rem; margin-bottom:0.65rem; display:block; }
+  .val-word { font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem; }
+  .val-desc { font-size:0.65rem; color:var(--warm-grey); line-height:1.5; }
+
+  .fit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:3rem; }
+  .fit-card { border:1px solid rgba(201,168,76,0.12); padding:1.5rem; }
+  .fit-label { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.9rem; }
+  .fit-list { list-style:none; font-size:0.72rem; line-height:2.1; }
+  .fit-list.yes { color:var(--ivory); }
+  .fit-list.no { color:var(--dim-grey); }
+
+  /* ════════════════════════════
+     05 — STRATEGY
+  ════════════════════════════ */
+
+  .kpi-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--gold-dim); border:1px solid var(--gold-dim); margin-bottom:3rem; }
+  .kpi-cell { background:var(--jet); padding:1.25rem; text-align:center; }
+  .kpi-num { font-family:'Cinzel',serif; font-size:1.6rem; font-weight:700; color:var(--gold); line-height:1; margin-bottom:0.3rem; }
+  .kpi-label { font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--warm-grey); line-height:1.5; }
+
+  .timeline { position:relative; padding-left:2.25rem; margin-bottom:3rem; }
+  .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(180deg,var(--gold),var(--emerald-light),var(--burgundy-light)); }
+  .tl-item { position:relative; margin-bottom:2.25rem; }
+  .tl-dot { position:absolute; left:-2.25rem; top:0.2rem; width:9px; height:9px; border:1px solid var(--gold); background:var(--onyx); transform:rotate(45deg); }
+  .tl-phase { font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:0.28rem; }
+  .tl-title { font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.08em; color:var(--ivory); margin-bottom:0.45rem; }
+  .tl-body { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.98rem; color:var(--text-muted); line-height:1.75; }
+
+  .platforms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem; }
+  .plat-card { border:1px solid rgba(201,168,76,0.12); padding:1.5rem; }
+  .plat-name { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  .plat-role { font-size:0.65rem; color:var(--emerald-light); margin-bottom:0.65rem; font-style:italic; }
+  .plat-list { list-style:none; }
+  .plat-list li { font-size:0.65rem; color:var(--warm-grey); padding:0.25rem 0; border-bottom:1px solid rgba(201,168,76,0.06); }
+  .plat-list li::before { content:'◆ '; color:var(--gold-dim); font-size:0.4rem; vertical-align:middle; }
+
+  .revenue-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding-bottom:4rem; }
+  .rev-card { padding-top:1.5rem; }
+  .rev-label { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.65rem; }
+  .rev-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:var(--ivory); margin-bottom:0.65rem; }
+  .rev-desc { font-size:0.68rem; color:var(--warm-grey); line-height:1.75; }
+
+  /* MERCH */
+  .merch-table { width:100%; border-collapse:collapse; margin-bottom:3rem; }
+  .merch-table th { font-family:'Cinzel',serif; font-size:0.55rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); padding:0.75rem 1rem; border-bottom:1px solid var(--gold-dim); text-align:left; background:var(--jet); }
+  .merch-table td { font-size:0.7rem; padding:0.8rem 1rem; border-bottom:1px solid rgba(201,168,76,0.07); color:var(--text-muted); }
+  .merch-table tr:hover td { background:rgba(201,168,76,0.03); }
+  .merch-item { color:var(--ivory) !important; font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span class="nav-star">✦</span> Star Girl</div>
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="go('identity',this)">Identity</button>
+    <button class="tab-btn" onclick="go('instagram',this)">Instagram</button>
+    <button class="tab-btn" onclick="go('tiktok',this)">TikTok</button>
+    <button class="tab-btn" onclick="go('press',this)">Press Kit</button>
+    <button class="tab-btn" onclick="go('strategy',this)">Strategy</button>
+  </div>
+</nav>
+
+
+<!-- ════ IDENTITY ════ -->
+<div id="identity" class="panel active">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">✦ Personal Brand Identity — Final · April 2026</div>
+      <h1 class="hero-title">
+        Star
+        <em>Girl.</em>
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-quote">
+        Dark Luxury · Silent Power · Gemstone Identity.<br>
+        <strong>"Until it's done, tell none."</strong>
+      </p>
+    </div>
+    <div class="hero-right">
+      <!-- 4-POINTED STAR MARK (correct — not 8) -->
+      <svg class="star-mark" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer rings -->
+        <circle cx="130" cy="130" r="118" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+        <circle cx="130" cy="130" r="96" fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="1"/>
+        <!-- tick marks -->
+        <g stroke="rgba(201,168,76,0.22)" stroke-width="0.75">
+          <line x1="130" y1="10" x2="130" y2="22"/><line x1="130" y1="238" x2="130" y2="250"/>
+          <line x1="10" y1="130" x2="22" y2="130"/><line x1="238" y1="130" x2="250" y2="130"/>
+          <line x1="47" y1="47" x2="56" y2="56"/><line x1="204" y1="204" x2="213" y2="213"/>
+          <line x1="213" y1="47" x2="204" y2="56"/><line x1="56" y1="204" x2="47" y2="213"/>
+        </g>
+        <!-- 4-pointed star — the real mark -->
+        <path d="M130 18 C130 18, 118 100, 55 130 C118 130, 118 162, 130 242 C130 242, 142 162, 205 130 C142 130, 142 100, 130 18 Z"
+              fill="rgba(201,168,76,0.18)" stroke="rgba(201,168,76,0.65)" stroke-width="0.75"/>
+        <!-- inner ring + center -->
+        <circle cx="130" cy="130" r="22" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <circle cx="130" cy="130" r="5" fill="rgba(201,168,76,0.85)"/>
+        <!-- emerald dots at cardinal points -->
+        <circle cx="130" cy="18" r="3" fill="rgba(45,106,80,0.8)"/>
+        <circle cx="130" cy="242" r="3" fill="rgba(45,106,80,0.8)"/>
+        <circle cx="18" cy="130" r="3" fill="rgba(45,106,80,0.8)"/>
+        <circle cx="242" cy="130" r="3" fill="rgba(45,106,80,0.8)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- COLOR SYSTEM — all 10 final swatches -->
+  <div class="pad-top">
+    <div class="section-title">Final Colour System</div>
+  </div>
+  <div class="palette-grid">
+    <div class="swatch" style="background:#0E0E0E;"><div class="sw-name">Onyx</div><div class="sw-hex">#0E0E0E</div></div>
+    <div class="swatch" style="background:#1A1A1A;"><div class="sw-name">Jet</div><div class="sw-hex">#1A1A1A</div></div>
+    <div class="swatch" style="background:#2E2E2E;"><div class="sw-name">Charcoal</div><div class="sw-hex">#2E2E2E</div></div>
+    <div class="swatch" style="background:#C9A84C;"><div class="sw-name">Sovereign Gold</div><div class="sw-hex">#C9A84C</div></div>
+    <div class="swatch" style="background:#1B4332;"><div class="sw-name">Deep Emerald</div><div class="sw-hex">#1B4332</div></div>
+    <div class="swatch" style="background:#5C1A1A;"><div class="sw-name">Burgundy</div><div class="sw-hex">#5C1A1A</div></div>
+    <div class="swatch" style="background:#3D2B10;"><div class="sw-name">Candlelight</div><div class="sw-hex">#3D2B10</div></div>
+    <div class="swatch" style="background:#E8E8E8;"><div class="sw-name">Ivory</div><div class="sw-hex">#E8E8E8</div></div>
+    <div class="swatch" style="background:#888888;"><div class="sw-name">Warm Grey</div><div class="sw-hex">#888888</div></div>
+    <div class="swatch" style="background:#555555;"><div class="sw-name">Dim Grey</div><div class="sw-hex">#555555</div></div>
+  </div>
+
+  <!-- COLOR RULES -->
+  <div class="pad">
+    <div class="section-title">Non-Negotiable Colour Rules</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;">
+      <div style="border-left:2px solid var(--gold);padding-left:1rem;">
+        <div style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Black is always the base</div>
+        <div style="font-size:0.7rem;color:var(--warm-grey);line-height:1.65;">Onyx or Jet is the background in every context. No white backgrounds. Ever.</div>
+      </div>
+      <div style="border-left:2px solid var(--gold);padding-left:1rem;">
+        <div style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Gold is the only warmth</div>
+        <div style="font-size:0.7rem;color:var(--warm-grey);line-height:1.65;">#C9A84C for the star mark, name treatment, CTAs, jewelry highlights. It does not appear casually.</div>
+      </div>
+      <div style="border-left:2px solid var(--gold);padding-left:1rem;">
+        <div style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Drops, not floods</div>
+        <div style="font-size:0.7rem;color:var(--warm-grey);line-height:1.65;">Emerald and burgundy are rare and deliberate. One emerald nail. One burgundy heel. The black makes them hit harder.</div>
+      </div>
+    </div>
+
+    <!-- 3 PAIRINGS -->
+    <div class="section-title">3 Signature Pairings</div>
+    <div class="pairings">
+      <div class="pairing-card">
+        <div class="pairing-swatch">
+          <div class="pairing-half" style="background:#1A1A1A;"></div>
+          <div class="pairing-half" style="background:#C9A84C;"></div>
+        </div>
+        <div class="pairing-body">
+          <div class="pairing-name">Signature</div>
+          <div class="pairing-mood">Refined, mysterious, powerful</div>
+          <div class="pairing-use">Jet + Sovereign Gold — Logo, profile, press kit, most posts</div>
+        </div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-swatch">
+          <div class="pairing-half" style="background:#0E0E0E;"></div>
+          <div class="pairing-half" style="background:#1B4332;"></div>
+          <div class="pairing-half" style="background:#C9A84C;"></div>
+        </div>
+        <div class="pairing-body">
+          <div class="pairing-name">Editorial</div>
+          <div class="pairing-mood">Earthy luxury, nature-meets-dark</div>
+          <div class="pairing-use">Onyx + Emerald + Gold — Outfit posts, editorial shoots</div>
+        </div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-swatch">
+          <div class="pairing-half" style="background:#0E0E0E;"></div>
+          <div class="pairing-half" style="background:#5C1A1A;"></div>
+          <div class="pairing-half" style="background:#C9A84C;"></div>
+        </div>
+        <div class="pairing-body">
+          <div class="pairing-name">Bold Moment</div>
+          <div class="pairing-mood">High-contrast power, cinematic</div>
+          <div class="pairing-use">Onyx + Burgundy + Gold — Events, statement posts, CEO content</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="section-title">Typography</div>
+    <div class="type-specimen">
+      <div class="type-label">Display / Identity — Cinzel Serif</div>
+      <div style="font-family:'Cinzel',serif;font-size:2.4rem;font-weight:700;color:var(--ivory);letter-spacing:0.04em;">Star Girl.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-label">Editorial / Quotes — Cormorant Garamond Italic</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-style:italic;font-weight:300;color:var(--gold);">"Fuck pretty — I'm gorgeous."</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-label">Body / UI — Montserrat Light</div>
+      <div style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:0.8rem;letter-spacing:0.22em;color:var(--warm-grey);text-transform:uppercase;">Founder · Strategist · Star Girl · Building in silence.</div>
+    </div>
+
+    <!-- IDENTITY PHRASES -->
+    <div class="section-title">Identity Phrases & Voice</div>
+    <div class="phrases-grid">
+      <div class="phrase-cell">
+        <div class="phrase-text">"Until it's done, tell none."</div>
+        <div class="phrase-meaning">Your operating philosophy. Silence before success.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Fuck pretty — I'm gorgeous."</div>
+        <div class="phrase-meaning">Power over performance. Presence over approval-seeking.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Gorgeous babes."</div>
+        <div class="phrase-meaning">How you see your community. Affirmation, not flattery.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"CEO style."</div>
+        <div class="phrase-meaning">The daily aspiration. Dressed and operating like the CEO you are.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Modeling aesthetic."</div>
+        <div class="phrase-meaning">Your visual standard. Editorial. Not casual.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Lights and shadows."</div>
+        <div class="phrase-meaning">The photographic philosophy. Drama through contrast.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Projector shot."</div>
+        <div class="phrase-meaning">Signature content type. Your star projected on a wall or surface.</div>
+      </div>
+      <div class="phrase-cell">
+        <div class="phrase-text">"Gold stack."</div>
+        <div class="phrase-meaning">Jewelry identity. Layered gold chains, rings, cross pendants.</div>
+      </div>
+    </div>
+
+    <!-- DUAL BRAND STAR -->
+    <div class="section-title">The Star Motif — Both Brands</div>
+  </div>
+
+  <div class="dual-brand">
+    <div class="brand-block">
+      <div class="brand-block-label">The Guidance Firm</div>
+      <span class="brand-star" style="color:#D4AF37;">✦</span>
+      <div class="brand-block-name" style="color:#D4AF37;">The Guidance Firm</div>
+      <div style="font-size:0.6rem;letter-spacing:0.18em;color:#888;margin-bottom:0.5rem;">Celestial Gold #D4AF37 · Navy #1E2F5C</div>
+      <div class="brand-block-sub">Warm · expert · guiding<br>Business owners, founders, SMEs</div>
+    </div>
+    <div class="brand-divider">
+      <div style="width:1px;height:60px;background:linear-gradient(180deg,transparent,var(--gold-dim),transparent);"></div>
+      <span style="font-size:0.6rem;letter-spacing:0.3em;">same symbol<br>two worlds</span>
+      <div style="width:1px;height:60px;background:linear-gradient(180deg,transparent,var(--gold-dim),transparent);"></div>
+    </div>
+    <div class="brand-block">
+      <div class="brand-block-label">Personal Brand · Star Girl</div>
+      <span class="brand-star" style="color:#C9A84C;">✦</span>
+      <div class="brand-block-name" style="color:#C9A84C;">Star Girl</div>
+      <div style="font-size:0.6rem;letter-spacing:0.18em;color:#888;margin-bottom:0.5rem;">Sovereign Gold #C9A84C · Onyx #0E0E0E</div>
+      <div class="brand-block-sub">Silent · powerful · intentional<br>Community, shoppers, media</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════ INSTAGRAM ════ -->
+<div id="instagram" class="panel">
+  <div class="pad">
+    <div class="section-title">Instagram Grid System — Final 12-Post Sequence</div>
+
+    <div style="margin-bottom:1.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--warm-grey);font-size:0.95rem;">
+      The grid reads almost entirely black — sovereign gold as the only recurring colour accent. Burgundy enters once. Emerald enters once. Candlelit amber in portrait posts. B&amp;W in editorial posts.
+    </div>
+
+    <div class="grid-12">
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.2),#0E0E0E 70%);"><div class="g-num">01</div><div class="g-type">Star Mark</div><div class="g-desc">Logo · 4-pt star on black</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:linear-gradient(160deg,#1A1A1A,#0E0E0E);"><div class="g-num">02</div><div class="g-type">Quote Card</div><div class="g-desc">"Until it's done, tell none."</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:#0E0E0E;"><div class="g-num">03</div><div class="g-type">OOTD</div><div class="g-desc">All black outfit, minimal caption</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 40% 55%,rgba(92,26,26,0.45),#0E0E0E 70%);"><div class="g-num">04</div><div class="g-type">Burgundy</div><div class="g-desc">Editorial moment or vision board</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.22),#0E0E0E 65%);"><div class="g-num">05</div><div class="g-type">Brand Post</div><div class="g-desc">Gold star · gold border</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 50% 60%,rgba(61,43,16,0.6),#0E0E0E 65%);"><div class="g-num">06</div><div class="g-type">Gold Jewelry</div><div class="g-desc">Rings, chains, wrist stack</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:linear-gradient(145deg,#1A1A1A,#0E0E0E);"><div class="g-num">07</div><div class="g-type">Quote</div><div class="g-desc">"Gorgeous babe." energy</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:#0E0E0E;"><div class="g-num">08</div><div class="g-type">CEO Style</div><div class="g-desc">Tailored, structured, editorial</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 50% 45%,rgba(27,67,50,0.5),#0E0E0E 70%);"><div class="g-num">09</div><div class="g-type">Emerald Drop</div><div class="g-desc">One piece breaks the black</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 45% 60%,rgba(61,43,16,0.7),#0E0E0E 68%);"><div class="g-num">10</div><div class="g-type">Portrait</div><div class="g-desc">Candlelit · amber warmth · deep shadow</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:linear-gradient(180deg,#1a1a1a,#0E0E0E);filter:grayscale(100%);"><div class="g-num">11</div><div class="g-type">B&amp;W Edit</div><div class="g-desc">High contrast · dramatic shadow</div></div></div>
+      <div class="g-cell"><div class="g-inner" style="background:radial-gradient(ellipse at 50% 50%,rgba(92,26,26,0.35),#0E0E0E 65%);"><div class="g-num">12</div><div class="g-type">Burgundy Star</div><div class="g-desc">Power statement · no caption</div></div></div>
+    </div>
+
+    <!-- CONTENT PILLAR TABLE -->
+    <div class="section-title">Content Pillars & Post Types</div>
+    <table class="pillar-table">
+      <thead>
+        <tr><th>Pillar</th><th>Frequency</th><th>Post Type</th><th>Grid Colour</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="pillar-name">Star / Brand Mark</td><td><span class="freq-badge">Every 3rd post</span></td><td>Static — gold star on black, minimal or no text</td><td>Onyx + Sovereign Gold</td></tr>
+        <tr><td class="pillar-name">Quote / Mindset</td><td><span class="freq-badge">2× / week</span></td><td>Gold text card — candlelit or jet background</td><td>Jet + Gold italic text</td></tr>
+        <tr><td class="pillar-name">OOTD / Style</td><td><span class="freq-badge">2× / week</span></td><td>Photo — all black outfit, editorial pose, minimal caption</td><td>Onyx or B&amp;W photography</td></tr>
+        <tr><td class="pillar-name">Colour Drop</td><td><span class="freq-badge">1× / week</span></td><td>Emerald or Burgundy accent — one intentional colour piece</td><td>Emerald or Burgundy bg</td></tr>
+        <tr><td class="pillar-name">Gold Jewelry</td><td><span class="freq-badge">1–2× / week</span></td><td>Macro closeup — chains, rings, wrist stack, cross pendant</td><td>Charcoal with gold highlight</td></tr>
+        <tr><td class="pillar-name">Portrait / Editorial</td><td><span class="freq-badge">2× / week</span></td><td>Candlelit portrait or high-contrast B&amp;W</td><td>Candlelit warm or B&amp;W</td></tr>
+        <tr><td class="pillar-name">CEO / Work Life</td><td><span class="freq-badge">1× / week</span></td><td>Behind the vision — working, thinking, building</td><td>Dark with gold or ivory text</td></tr>
+        <tr><td class="pillar-name">Polaroid / Contact Sheet</td><td><span class="freq-badge">1× / week</span></td><td>Carousel — film grain, multi-image, BTS day-in-life</td><td>Film grain over dark bg</td></tr>
+      </tbody>
+    </table>
+
+    <!-- EDITING PRESETS -->
+    <div class="section-title">Editing Presets — Lightroom Mobile</div>
+    <div class="presets-grid">
+      <div class="preset-card">
+        <div class="preset-header" style="background:radial-gradient(ellipse at 50% 100%,rgba(61,43,16,0.4),transparent);">
+          <div class="preset-name">SG Dark</div>
+          <div class="preset-file">Dark Feminine</div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row"><span class="preset-label">Exposure</span><span class="preset-val neg">−15</span></div>
+          <div class="preset-row"><span class="preset-label">Contrast</span><span class="preset-val pos">+30</span></div>
+          <div class="preset-row"><span class="preset-label">Highlights</span><span class="preset-val neg">−40</span></div>
+          <div class="preset-row"><span class="preset-label">Shadows</span><span class="preset-val neg">−20</span></div>
+          <div class="preset-row"><span class="preset-label">Saturation</span><span class="preset-val neg">−15</span></div>
+          <div class="preset-row"><span class="preset-label">Vitality</span><span class="preset-val pos">+21</span></div>
+          <div class="preset-row"><span class="preset-label">Grain</span><span class="preset-val pos">+15</span></div>
+        </div>
+      </div>
+      <div class="preset-card">
+        <div class="preset-header" style="background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,0.15),transparent);">
+          <div class="preset-name">SG Candle</div>
+          <div class="preset-file">Candlelit Portrait</div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row"><span class="preset-label">Exposure</span><span class="preset-val neg">−10</span></div>
+          <div class="preset-row"><span class="preset-label">Warmth</span><span class="preset-val pos">+25</span></div>
+          <div class="preset-row"><span class="preset-label">Highlights</span><span class="preset-val neg">−50</span></div>
+          <div class="preset-row"><span class="preset-label">Shadows</span><span class="preset-val pos">+10</span></div>
+          <div class="preset-row"><span class="preset-label">Saturation</span><span class="preset-val neg">−10</span></div>
+          <div class="preset-row"><span class="preset-label">Grain</span><span class="preset-val pos">+20</span></div>
+          <div class="preset-row"><span class="preset-label">Blacks</span><span class="preset-val neg">−15</span></div>
+        </div>
+      </div>
+      <div class="preset-card">
+        <div class="preset-header" style="background:radial-gradient(ellipse at 50% 100%,rgba(100,100,100,0.2),transparent);">
+          <div class="preset-name">SG BW</div>
+          <div class="preset-file">B&amp;W High Contrast</div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row"><span class="preset-label">Desaturate</span><span class="preset-val" style="color:var(--warm-grey);">100%</span></div>
+          <div class="preset-row"><span class="preset-label">Exposure</span><span class="preset-val neg">−5</span></div>
+          <div class="preset-row"><span class="preset-label">Contrast</span><span class="preset-val pos">+45</span></div>
+          <div class="preset-row"><span class="preset-label">Highlights</span><span class="preset-val neg">−60</span></div>
+          <div class="preset-row"><span class="preset-label">Shadows</span><span class="preset-val neg">−30</span></div>
+          <div class="preset-row"><span class="preset-label">Grain</span><span class="preset-val pos">+25</span></div>
+          <div class="preset-row"><span class="preset-label">Sharpening</span><span class="preset-val pos">+30</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPTION TEMPLATES -->
+    <div class="section-title">Caption Templates</div>
+    <div class="caption-cards">
+      <div class="caption-card">
+        <div class="caption-type">Anchor Portrait — Contemplative</div>
+        <div class="caption-text">She didn't find her power in the noise.<br>She found it in the stillness —<br>candle burning, knowing exactly who she was.<br><br>Star Girl isn't a vibe. It's a decision.</div>
+        <div class="caption-tags">#stargirl #darkluxury #blackgirlmagic #luxurylifestyle #editorialfashion #sovereignfemininity #darkfeminine</div>
+      </div>
+      <div class="caption-card">
+        <div class="caption-type">Reel Hook — Pattern Interrupt</div>
+        <div class="caption-text">POV: you stopped shrinking yourself to fit spaces that were never built for you. ✦<br><br>(A Star Girl knows which rooms to leave.)</div>
+        <div class="caption-tags">#darkfeminine #luxurymindset #stargirl #editorial #queenshift #ceolife</div>
+      </div>
+      <div class="caption-card">
+        <div class="caption-type">CEO Style Post</div>
+        <div class="caption-text">Building in silence until the work speaks for itself.<br><br>CEO style is not a look.<br>It's a standard.</div>
+        <div class="caption-tags">#ceostyle #darkluxury #stargirl #blackwomeninbusiness #editorialfashion #goldstandard</div>
+      </div>
+      <div class="caption-card">
+        <div class="caption-type">No Caption — Power Move</div>
+        <div class="caption-text">.</div>
+        <div class="caption-tags">#stargirl #darkluxury</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════ TIKTOK ════ -->
+<div id="tiktok" class="panel">
+  <div class="pad">
+    <div class="section-title">TikTok Content System</div>
+
+    <!-- SERIES ARC -->
+    <div style="background:var(--jet);border:1px solid rgba(201,168,76,0.15);padding:2rem 2.5rem;margin-bottom:3rem;border-left:3px solid var(--gold);">
+      <div style="font-size:0.55rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:0.5rem;">The Vlog Premise</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--ivory);margin-bottom:0.75rem;">"Come build the life I want with me."</div>
+      <div style="font-size:0.75rem;color:var(--warm-grey);line-height:1.8;max-width:720px;">A lifestyle vlog that begins as a founder mockumentary and evolves into full luxury lifestyle content as The Guidance Firm takes off. The audience watches the whole arc — the grind, the silence, the glow-up — in real time. This is the long game. Every video is a reason to stay.</div>
+    </div>
+
+    <!-- SERIES PHASES -->
+    <div class="section-title">Vlog Series Arc</div>
+    <div class="vlog-phases">
+      <div class="phase-cell">
+        <div class="phase-num">01</div>
+        <div class="phase-title">Building My Company</div>
+        <div class="phase-desc">The mockumentary era. The Office meets Abbott Elementary — fourth-wall breaks, interview-style cuts, silent chaos energy. You're building The Guidance Firm in real time and the audience is in the room with you.</div>
+        <div class="phase-eps"><span>Format:</span> Mockumentary / vlog hybrid<br><span>Tone:</span> Dry, self-aware, CEO in progress<br><span>When:</span> Now — launch phase</div>
+      </div>
+      <div class="phase-cell">
+        <div class="phase-num">02</div>
+        <div class="phase-title">The Transition</div>
+        <div class="phase-desc">The Guidance Firm is moving. Content shifts — the BTS becomes a blend of founder life and dark luxury lifestyle. The grind is still there but the aesthetics start leveling up. Audience watches you become the person you were building toward.</div>
+        <div class="phase-eps"><span>Format:</span> Vlog + editorial hybrid<br><span>Tone:</span> Quieter. More intentional.<br><span>When:</span> 90–180 days in</div>
+      </div>
+      <div class="phase-cell">
+        <div class="phase-num">03</div>
+        <div class="phase-title">Star Girl In Full</div>
+        <div class="phase-desc">Full luxury lifestyle vlog. Brand trips, editorial fashion content, GRWM rituals, dream apartment tours. The mockumentary easter eggs are still there — it's still you — but now the life matches the aesthetic the audience watched you build.</div>
+        <div class="phase-eps"><span>Format:</span> Lifestyle / editorial / fashion<br><span>Tone:</span> Quiet power, arrived<br><span>When:</span> Post-milestone</div>
+      </div>
+    </div>
+
+    <!-- FORMAT: MOCKUMENTARY BREAKDOWN -->
+    <div class="section-title">Mockumentary Format — Phase 1</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--warm-grey);font-size:0.95rem;margin-bottom:1.5rem;">
+      The Office + Abbott Elementary: fourth-wall breaks, talking-head confessionals, and the dry comedy of someone building something real while staying completely unbothered about the camera.
+    </div>
+    <div class="format-grid">
+      <div class="format-card office">
+        <span class="format-icon">🎙</span>
+        <div class="format-name">The Talking Head</div>
+        <div class="format-desc">Direct to camera. Dry. Self-aware. The confessional where you say what you actually think — the one nobody in the video can hear you say.</div>
+        <ul class="format-examples">
+          <li>"Today I sent the coldest pitch email I've ever written. [Cut to: sending email without blinking.]"</li>
+          <li>"My accountant said something concerning. We don't need to talk about that."</li>
+          <li>"She said 'we'll circle back.' [Look at camera.]"</li>
+        </ul>
+      </div>
+      <div class="format-card abbott">
+        <span class="format-icon">📸</span>
+        <div class="format-name">Fourth-Wall Break</div>
+        <div class="format-desc">Mid-action. You look directly at the camera — no pause, no explanation. Abbott Elementary energy. The audience is the only one who knows what you know.</div>
+        <ul class="format-examples">
+          <li>Someone says something absurd. Slow turn to camera.</li>
+          <li>Read an email. Look up. Say nothing. Return to screen.</li>
+          <li>Mid-task realization. Eyes to lens. "...Anyway."</li>
+        </ul>
+      </div>
+      <div class="format-card hybrid">
+        <span class="format-icon">🎬</span>
+        <div class="format-name">The Cut-Away</div>
+        <div class="format-desc">Narrate one thing. Show another. The joke lives in the gap — exactly like both reference shows. Works in talking head format AND as a B-roll voiceover.</div>
+        <ul class="format-examples">
+          <li>VO: "I stay completely calm under pressure." Cut to: calling your mom in a parking lot.</li>
+          <li>VO: "The brand is built on silence." Cut to: screaming internally at the computer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EPISODE IDEAS — SERIES 1 -->
+    <div class="section-title">Episode Bible — Series 1: Building My Company</div>
+    <div class="episode-list">
+      <div class="ep-card">
+        <div class="ep-num">01</div>
+        <div class="ep-series">Series 1 · Building My Company</div>
+        <div class="ep-title">The Pilot: "I Started a Company. Nobody Knows Yet."</div>
+        <div class="ep-hook">"Until it's done, tell none." — Here's what that actually looks like.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> OOTD getting dressed like you're going to an office you own.<br>
+          <strong>Beat 1:</strong> Talking head — "People ask what I do. I smile."<br>
+          <strong>Beat 2:</strong> BTS of working — laptop, candle, The Guidance Firm open on screen.<br>
+          <strong>Beat 3:</strong> Send one email. Four-wall break. Say nothing.<br>
+          <strong>Close:</strong> "Day one of many. They'll know when it's time."
+        </div>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">02</div>
+        <div class="ep-series">Series 1 · Building My Company</div>
+        <div class="ep-title">"What I Actually Do All Day As a Founder"</div>
+        <div class="ep-hook">It looks like sitting. It is, technically. But also it isn't.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> 6am ritual — candlelit, notebook, no talking.<br>
+          <strong>Beat 1:</strong> Talking head on morning discipline as a CEO.<br>
+          <strong>Beat 2:</strong> Time-stamped day-in-life (7am / 10am / 2pm / 6pm).<br>
+          <strong>Beat 3:</strong> One real challenge of the day — dry delivery.<br>
+          <strong>Close:</strong> Putting the laptop away. Look at camera. "See you tomorrow."
+        </div>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">03</div>
+        <div class="ep-series">Series 1 · Building My Company</div>
+        <div class="ep-title">"The Pitch" — I Tried to Get My First Client</div>
+        <div class="ep-hook">I prepared for everything. Everything was fine. Mostly.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> Talking head — "I had a call today. This is what I told myself beforehand."<br>
+          <strong>Beat 1:</strong> Pre-call ritual. CEO outfit. Confidence building.<br>
+          <strong>Beat 2:</strong> Post-call talking head. Real report.<br>
+          <strong>Beat 3:</strong> Four-wall break over outcome.<br>
+          <strong>Close:</strong> "The next call will be different." [Goes back to work.]
+        </div>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">04</div>
+        <div class="ep-series">Series 1 · Building My Company</div>
+        <div class="ep-title">"My Brand Is My First Product"</div>
+        <div class="ep-hook">Before the business card — the identity. Here's why Star Girl is the strategy.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> GRWM — the ritual as brand building, not vanity.<br>
+          <strong>Beat 1:</strong> Talking head on personal brand before company brand.<br>
+          <strong>Beat 2:</strong> Walk through: the star mark, the palette, the grid.<br>
+          <strong>Beat 3:</strong> Shoot a content day — BTS of making posts.<br>
+          <strong>Close:</strong> "The brand is the business. The business is the brand."
+        </div>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">05</div>
+        <div class="ep-series">Series 1 · Building My Company</div>
+        <div class="ep-title">"A Hard Week" — No Filter</div>
+        <div class="ep-hook">Silent power doesn't mean it's always easy. Here's a real one.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> Monday talking head — energy honest, not dramatic.<br>
+          <strong>Beat 1:</strong> Real moments — what went sideways, no performance.<br>
+          <strong>Beat 2:</strong> What pulled you through (ritual, music, a decision).<br>
+          <strong>Beat 3:</strong> End of week. Changed. Still standing.<br>
+          <strong>Close:</strong> "Building in silence means this is part of the story too."
+        </div>
+      </div>
+      <div class="ep-card">
+        <div class="ep-num">06</div>
+        <div class="ep-series">Series 1 → Transition</div>
+        <div class="ep-title">"First Brand Deal" — The Brand Is Working</div>
+        <div class="ep-hook">The silence paid off. Now the world gets one small peek.</div>
+        <div class="ep-structure">
+          <strong>Open:</strong> Talking head — "Something happened. I can talk about it now."<br>
+          <strong>Beat 1:</strong> The deal process — pitch, wait, yes.<br>
+          <strong>Beat 2:</strong> OOTD styled around the brand.<br>
+          <strong>Beat 3:</strong> Shoot day BTS — editorial fashion meets founder life.<br>
+          <strong>Close:</strong> Four-wall break. Smile. Say nothing. <em>End.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT MODES -->
+    <div class="section-title">TikTok Content Modes — All Phases</div>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="mode-img" style="background:radial-gradient(ellipse at 50% 60%,rgba(201,168,76,0.15),#0E0E0E);">
+          <div class="mode-img-label">Editorial Fashion<br/>Wisdom Kaye energy</div>
+        </div>
+        <div class="mode-body">
+          <div class="mode-name">Editorial Fashion</div>
+          <div class="mode-inspo">Inspo: Wisdom Kaye — storytelling through fashion</div>
+          <div class="mode-desc">All-black fits styled as visual essays, not outfits. Each video has a mood, a concept, a reason. Noir Fashion shot type. The model-influencer standard. No "here's what I'm wearing" — just the image, moving.</div>
+        </div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-img" style="background:radial-gradient(ellipse at 50% 40%,rgba(27,67,50,0.35),#0E0E0E);">
+          <div class="mode-img-label">Lifestyle Vlog<br/>Jackie · Kristy Sarah energy</div>
+        </div>
+        <div class="mode-body">
+          <div class="mode-name">Lifestyle Vlog</div>
+          <div class="mode-inspo">Inspo: Jackie Asamoah · Kristy Sarah — real but aspirational</div>
+          <div class="mode-desc">Day-in-life, GRWM, morning rituals, apartment content. Personal without being vulnerable. The intimacy of watching someone's real life while the aesthetic stays locked. The audience feels like a friend inside the world.</div>
+        </div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-img" style="background:radial-gradient(ellipse at 50% 60%,rgba(92,26,26,0.3),#0E0E0E);">
+          <div class="mode-img-label">Founder BTS<br/>The Office · Abbott energy</div>
+        </div>
+        <div class="mode-body">
+          <div class="mode-name">Founder Mockumentary</div>
+          <div class="mode-inspo">Inspo: The Office · Abbott Elementary — dry, self-aware</div>
+          <div class="mode-desc">The company-building content. Talking heads, four-wall breaks, dry delivery. The brand is a business and the business is a character. This is the series that launches and locks the audience in before anything else.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETENTION MECHANICS -->
+    <div class="section-title">Retention & Draw — How to Keep Them Watching</div>
+    <div class="retention-grid">
+      <div class="ret-card">
+        <div class="ret-title">The Hook (First 1.5 Seconds)</div>
+        <div class="ret-body">
+          <em>Never start with a greeting.</em> Start mid-action, mid-thought, or mid-scene. The viewer should feel like they walked into something already happening.<br><br>
+          Examples:<br>
+          — "Nobody asked for this, but—" [already in OOTD]<br>
+          — [Silent. Close-up. Then: "I sent the email."]<br>
+          — "Today was interesting." [Dry. No expression. Go.]
+        </div>
+      </div>
+      <div class="ret-card">
+        <div class="ret-title">The Reason to Stay (Middle)</div>
+        <div class="ret-body">
+          <em>One revelation per video.</em> The audience should feel like they learned something, saw something, or felt something they didn't expect. In the mockumentary era, it's the talking head payoff. In lifestyle era, it's the moment of access.<br><br>
+          Plant a mystery early: "Later in this video something is going to change." Then deliver.
+        </div>
+      </div>
+      <div class="ret-card">
+        <div class="ret-title">The Reason to Come Back (End)</div>
+        <div class="ret-body">
+          <em>Never end clean.</em> The last five seconds should open something. A look to camera. An unresolved moment. "Part 2 is coming." Or just — "We'll see."<br><br>
+          The four-wall break as a closer is the signature move. No words needed. The look says: you know what just happened, and so do I.
+        </div>
+      </div>
+      <div class="ret-card">
+        <div class="ret-title">Series Architecture — Watch Time</div>
+        <div class="ret-body">
+          <em>Name your series visually.</em> Every "Building My Company" episode has the same title card treatment so audiences binge-watch. Same sound design, same opening shot style, same font treatment.<br><br>
+          Create a reason to watch in order: each episode ends with a breadcrumb. The pilot plants a goal. Each episode is one step toward it. When the goal lands — that's the era shift.
+        </div>
+      </div>
+    </div>
+
+    <!-- CROSS-PLATFORM -->
+    <div class="section-title">Cross-Platform: TikTok → Instagram Growth Loop</div>
+    <div class="cross-grid">
+      <div class="cross-card">
+        <div class="cross-platform">TikTok → Instagram</div>
+        <div class="cross-role">TikTok drives discovery. Instagram holds the world.</div>
+        <ul class="cross-list">
+          <li>Every TikTok Reel gets reposted to Instagram Reels (no TikTok watermark)</li>
+          <li>TikTok hook style — story, tension, reveal — performs on IG Reels too</li>
+          <li>End every TikTok with: "Full editorial on Instagram" or "Grid post is up"</li>
+          <li>Instagram grid is the portfolio. TikTok is the invitation.</li>
+        </ul>
+      </div>
+      <div class="cross-card">
+        <div class="cross-platform">Brand Deals & Trips</div>
+        <div class="cross-role">The compound effect — both platforms build the case.</div>
+        <ul class="cross-list">
+          <li>Media kit shows combined reach (IG feed + TikTok views)</li>
+          <li>Brand trips: TikTok vlog format → IG editorial stills from same trip</li>
+          <li>Fashion collabs: Wisdom Kaye style on TikTok, editorial still on IG</li>
+          <li>Pitch brands at 6 months with 90-day analytics screenshot</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════ PRESS KIT ════ -->
+<div id="press" class="panel">
+  <div class="pad">
+    <div class="section-title">Press Kit</div>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+      <div class="profile-star">✦</div>
+      <div>
+        <div class="profile-name">[Your Name]</div>
+        <div class="profile-title">Founder · Star Girl · Strategist</div>
+        <div class="profile-tagline">"I build things in silence and let success make the noise."</div>
+        <div class="profile-links">
+          <span class="profile-link">Work with me</span>
+          <span class="profile-link">Shop</span>
+          <span class="profile-link">Portfolio</span>
+          <span class="profile-link">Press</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM BIO -->
+    <div style="background:var(--jet);border:1px solid rgba(201,168,76,0.15);padding:1.5rem 2rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+      <div>
+        <div style="font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:0.75rem;">Instagram Bio — 160 chars</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.88rem;line-height:2;color:var(--ivory);">
+          ✦ Founder · Star Girl<br>
+          Building in silence.<br>
+          The Guidance Firm ↓<br>
+          [link in bio]
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:0.75rem;">Link in Bio Structure</div>
+        <ul style="list-style:none;font-size:0.7rem;color:var(--warm-grey);line-height:2.2;">
+          <li>✦ The Guidance Firm website</li>
+          <li>✦ Shop / affiliate page</li>
+          <li>✦ Press / media kit</li>
+          <li>✦ Book a call / Work with me</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BIO VERSIONS -->
+    <div class="bio-block">
+      <div class="bio-version">Long Bio — 150 words</div>
+      <div class="bio-text">[Your Name] is a founder, strategist, and the architect of the Star Girl aesthetic — a visual and philosophical language built at the intersection of dark luxury, sovereign femininity, and Black editorial excellence. Known for building in silence and letting the work speak, she operates at the intersection of business strategy and dark feminine ambition as the founder of <em>The Guidance Firm</em>. Her content spans personal brand education, editorial fashion, luxury lifestyle, and the real-time documentation of building a company from the ground up. She creates for women who know their worth and refuse to perform for anyone's timeline. Based in Baltimore.</div>
+    </div>
+
+    <div class="bio-block">
+      <div class="bio-version">Short Bio — 50 words</div>
+      <div class="bio-text">[Your Name] is the founder of The Guidance Firm and the creator behind the Star Girl aesthetic — dark luxury, sovereign femininity, and Black editorial beauty. She documents the unglamorous truth of building something real while staying completely, deliberately fly.</div>
+    </div>
+
+    <div class="bio-block">
+      <div class="bio-version">One-Liner</div>
+      <div class="bio-text" style="font-size:1.3rem;color:var(--gold);">Founder · Strategist · Star Girl. Building in silence.</div>
+    </div>
+
+    <div class="bio-block">
+      <div class="bio-version">Tagline</div>
+      <div class="bio-text" style="font-size:1.15rem;color:var(--ivory);font-style:italic;">"I build things in silence and let success make the noise."</div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="section-title">Brand Values</div>
+    <div class="values-grid">
+      <div class="val-cell"><span class="val-icon">✦</span><div class="val-word">Sovereignty</div><div class="val-desc">Every choice made from fullness, never from fear</div></div>
+      <div class="val-cell"><span class="val-icon">◈</span><div class="val-word">Silence</div><div class="val-desc">The brand does not explain itself. It is felt.</div></div>
+      <div class="val-cell"><span class="val-icon">❋</span><div class="val-word">Intention</div><div class="val-desc">Nothing is accidental. Everything is chosen.</div></div>
+      <div class="val-cell"><span class="val-icon">✧</span><div class="val-word">Depth</div><div class="val-desc">Surface beauty as an entrance, not the destination</div></div>
+    </div>
+
+    <!-- COLLABORATION FIT -->
+    <div class="section-title">Collaboration Alignment</div>
+    <div class="fit-grid">
+      <div class="fit-card">
+        <div class="fit-label" style="color:var(--gold);">✓ Strong Fit</div>
+        <ul class="fit-list yes">
+          <li>— Luxury beauty & fragrance</li>
+          <li>— Fine jewellery & accessories (gold-toned)</li>
+          <li>— Premium & slow fashion</li>
+          <li>— Elevated wellness (non-clinical)</li>
+          <li>— Interior & home luxury</li>
+          <li>— Black-owned luxury brands</li>
+          <li>— Photography & creative tools</li>
+          <li>— Travel & brand trip partners</li>
+        </ul>
+      </div>
+      <div class="fit-card">
+        <div class="fit-label" style="color:var(--dim-grey);">✗ Not Aligned</div>
+        <ul class="fit-list no">
+          <li>— Fast fashion / disposable brands</li>
+          <li>— Diet culture / weight loss</li>
+          <li>— High-volume discount products</li>
+          <li>— Overly corporate / sterile aesthetics</li>
+          <li>— No pastels, no bright colours, no white</li>
+          <li>— Brands without authentic values</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MERCH -->
+    <div class="section-title">Physical Brand — Merch & Apparel Direction</div>
+    <table class="merch-table">
+      <thead><tr><th>Item</th><th>Spec</th></tr></thead>
+      <tbody>
+        <tr><td class="merch-item">Apparel Base</td><td>Black only — no other base colour</td></tr>
+        <tr><td class="merch-item">Print Colour</td><td>Sovereign Gold #C9A84C or Ivory #E8E8E8</td></tr>
+        <tr><td class="merch-item">Logo Treatment</td><td>4-pointed star (✦) + name in Montserrat or clean sans</td></tr>
+        <tr><td class="merch-item">Print Finish</td><td>Soft-touch matte or distressed — never shiny or plasticky</td></tr>
+        <tr><td class="merch-item">Accent Pieces</td><td>One emerald or burgundy colourway per collection drop</td></tr>
+        <tr><td class="merch-item">Hat / Headwear</td><td>Black structured cap — gold embroidered star mark</td></tr>
+        <tr><td class="merch-item">Tote / Bag</td><td>Black canvas — gold screen print wordmark</td></tr>
+        <tr><td class="merch-item">Jewelry Line (future)</td><td>Gold-toned chain, cross pendant, stacked rings — sovereign gold finish</td></tr>
+        <tr><td class="merch-item">Hang Tag</td><td>Onyx card, gold foil 4-pt star, name in Cinzel — 4 variants: Primary / Gold / Burgundy / Emerald</td></tr>
+      </tbody>
+    </table>
+
+    <!-- CONTACTS -->
+    <div class="section-title">Media & Contact</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding-bottom:4rem;">
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:1.5rem;">
+        <div style="font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">General & Partnerships</div>
+        <div style="font-family:'Cinzel',serif;font-size:0.88rem;color:var(--ivory);margin-bottom:0.4rem;">[Your Name]</div>
+        <div style="font-size:0.7rem;color:var(--warm-grey);font-style:italic;">hello@[yourdomain].com<br>@[handle] on Instagram &amp; TikTok</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:1.5rem;">
+        <div style="font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Press &amp; Media Requests</div>
+        <div style="font-family:'Cinzel',serif;font-size:0.88rem;color:var(--ivory);margin-bottom:0.4rem;">[Manager / PR Name]</div>
+        <div style="font-size:0.7rem;color:var(--warm-grey);font-style:italic;">press@[yourdomain].com<br>Response time: 48 hours</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════ STRATEGY ════ -->
+<div id="strategy" class="panel">
+  <div class="pad">
+    <div class="section-title">Brand Growth Strategy</div>
+
+    <div class="kpi-grid">
+      <div class="kpi-cell"><div class="kpi-num">4×</div><div class="kpi-label">Posts / Week<br>Instagram</div></div>
+      <div class="kpi-cell"><div class="kpi-num">3×</div><div class="kpi-label">Videos / Week<br>TikTok</div></div>
+      <div class="kpi-cell"><div class="kpi-num">2×</div><div class="kpi-label">Reels / Week<br>Both Platforms</div></div>
+      <div class="kpi-cell"><div class="kpi-num">90d</div><div class="kpi-label">First Milestone<br>Target</div></div>
+      <div class="kpi-cell"><div class="kpi-num">3</div><div class="kpi-label">Revenue Streams<br>To Activate</div></div>
+    </div>
+
+    <div class="section-title">90-Day Roadmap</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Month 1 — Days 1–30</div>
+        <div class="tl-title">Foundation, Content Bank & Series Launch</div>
+        <div class="tl-body">Lock the Instagram aesthetic grid. Shoot a 30-post content bank before posting. Launch the TikTok mockumentary with Episodes 1–3 in the first two weeks — drop them close together to build narrative momentum. Establish the 12-post IG grid sequence. Activate all content pillars.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--emerald-light);"></div>
+        <div class="tl-phase">Month 2 — Days 31–60</div>
+        <div class="tl-title">Authority, Cross-Platform & First Pitches</div>
+        <div class="tl-body">TikTok Series 1 continues — the audience is invested in the story. Begin strategic engagement with brands in your category. Pitch 2 small collabs with products you already use. Launch email list with lead magnet. Repurpose TikTok content to Instagram Reels without the watermark. Track which content format gets more watch time.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--burgundy-light);"></div>
+        <div class="tl-phase">Month 3 — Days 61–90</div>
+        <div class="tl-title">Monetisation, First Brand Deal & Phase 2 Tease</div>
+        <div class="tl-body">Activate first paid partnership. Launch a digital product — preset pack, aesthetic guide, or content planning template. Episode 6 ("First Brand Deal") is your Series 1 finale and signals the Phase 2 transition. Begin approaching brand trip opportunities with combined IG + TikTok media kit.</div>
+      </div>
+    </div>
+
+    <div class="section-title">Platform Roles</div>
+    <div class="platforms-grid">
+      <div class="plat-card">
+        <div class="plat-name">Instagram</div>
+        <div class="plat-role">The brand world. The portfolio. The home.</div>
+        <ul class="plat-list">
+          <li>Editorial feed as permanent record</li>
+          <li>Stories for daily presence & warmth</li>
+          <li>Reels for reach — repurposed from TikTok</li>
+          <li>Close Friends for high-trust community</li>
+          <li>Grid tells the whole aesthetic story at a glance</li>
+        </ul>
+      </div>
+      <div class="plat-card">
+        <div class="plat-name">TikTok</div>
+        <div class="plat-role">Discovery engine. Narrative depth. The series lives here.</div>
+        <ul class="plat-list">
+          <li>Building My Company — serialized mockumentary</li>
+          <li>Lifestyle vlog → fashion editorial over time</li>
+          <li>Trend-adjacent, never trend-dependent</li>
+          <li>Hook in first 1.5 seconds — always</li>
+          <li>Every video is a reason to come back</li>
+        </ul>
+      </div>
+      <div class="plat-card">
+        <div class="plat-name">Email / Newsletter</div>
+        <div class="plat-role">Owned audience. The real asset.</div>
+        <ul class="plat-list">
+          <li>Monthly "Star Letter" — personal + curated</li>
+          <li>Early access to collabs & launches</li>
+          <li>Aesthetic mood board drops</li>
+          <li>Lead magnet: free Lightroom presets or aesthetic guide</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">Revenue Architecture</div>
+    <div class="revenue-grid">
+      <div class="rev-card" style="border-top:2px solid var(--gold);">
+        <div class="rev-label" style="color:var(--gold);">Stream I</div>
+        <div class="rev-title">Brand Partnerships</div>
+        <div class="rev-desc">Paid posts, gifted with deliverables, long-term ambassador deals. Rate card includes IG feed post, Stories, AND TikTok video — combined reach package. Brand trips as the Phase 3 target.</div>
+      </div>
+      <div class="rev-card" style="border-top:2px solid var(--emerald-light);">
+        <div class="rev-label" style="color:var(--emerald-light);">Stream II</div>
+        <div class="rev-title">Digital Products</div>
+        <div class="rev-desc">Lightroom preset packs (SG Dark, SG Candle, SG BW), aesthetic brand kits, Instagram content planning templates. Passive. Aligned with the brand identity at the product level.</div>
+      </div>
+      <div class="rev-card" style="border-top:2px solid var(--burgundy-light);">
+        <div class="rev-label" style="color:var(--burgundy-light);">Stream III</div>
+        <div class="rev-title">Consulting / The Guidance Firm</div>
+        <div class="rev-desc">Personal brand strategy, business consulting, and The Guidance Firm's service offering. The TikTok series is also the longest-form case study for why you're worth hiring. The content is the pitch.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+function go(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
